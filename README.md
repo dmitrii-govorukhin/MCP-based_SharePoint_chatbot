@@ -13,14 +13,16 @@ The chatbot lets users ask ordinary questions about information stored on the Sh
 MCP stands for Model Context Protocol. It defines a common protocol for communication between an AI application and external capabilities, such as data sources, APIs, and tools.
 
 The chatbot workflow:
-1. The user enters a question in everyday language; no SharePoint search syntax is required.
-2. JavaScript on SharePoint site sent the request to the backend server.
-3. Backend server processes the request and sent it to ChatGPT through OpenAI API.
-4. The request is converted into a concise search phrase intended to locate the most relevant SharePoint information.
-5. SharePoint Search finds matching documents and returns their titles, links, file types, relevance ranks, and short search snippets.
-6. The relevant SharePoint results and snippets become the source material used to answer the user's questions.
-7. GPT is instructed to answer only from the supplied SharePoint information. If the results are insufficient, it should say that the information was not found.
-8. The chatbot displays the documents found by SharePoint, with links, ranks, and snippets, allowing users to open and review the source material themselves.
+1. JavaScript sends the user's request to the MCP host.
+2. The MCP host sends user's request and the available tool definitions (retrieved from the MCP server via the MCP client) to the LLM.
+3. The LLM analyzes the request and either returns a response directly or requests a tool call.
+4. If the LLM requests a tool call, the MCP Client sends a tools/call request to the MCP Server.
+5. The MCP server calls the SharePoint search API.
+6. The MCP server receives the search results from the SharePoint search API.
+7. The MCP server returns the search results to the MCP host.
+8. The MCP host sends the search results to the LLM.
+9. The LLM analyzes it and generates a final response (or, if necessary, requests another call to the tool).
+10. The MCP host sends the response to JavaScript to put it on the SharePoint site.
 
 The project file structure:
  - agent_backend
