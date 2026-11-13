@@ -37,4 +37,4 @@ The project file structure:
 
 ![alt text](https://github.com/dmitrii-govorukhin/MCP-based_SharePoint_chatbot/blob/main/SharePoint_Chatbot_with_MCP.png?raw=true)
 
-You can view examples of chatbot questions and answers in the previous project ![here](https://github.com/dmitrii-govorukhin/RAG-based_SharePoint_chatbot/blob/main/README.md).
+You can view examples of chatbot questions and answers in the previous project [here](https://github.com/dmitrii-govorukhin/RAG-based_SharePoint_chatbot/blob/main/README.md).
